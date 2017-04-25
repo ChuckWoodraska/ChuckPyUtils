@@ -18,9 +18,9 @@ setup(
     license='',
     author='Chuck Woodraska',
     author_email='chuck.woodraska@gmail.com',
-    description=read('README'),
+    description=read('README.md'),
     requires=[],
-    long_description=read('README'),
+    long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities"
