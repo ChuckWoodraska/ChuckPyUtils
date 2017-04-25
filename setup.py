@@ -13,7 +13,7 @@ def read(fname):
 setup(
     name='chuck_pyutils',
     version='0.1',
-    packages=['scripts'],
+    packages=['chuck_pyutils'],
     url='https://github.com/ChuckWoodraska/chuck-pyutils',
     license='',
     author='Chuck Woodraska',
