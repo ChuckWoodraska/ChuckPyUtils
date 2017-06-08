@@ -134,7 +134,7 @@ def object_dump(obj_name, obj_inst):
 
 
 def db_connect(db_config):
-    if db_config['CA_FILE']:
+    if 'CA_FILE' in db_config:
         connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
                                      db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor,
                                      ssl={'ca': get_file_path(__file__, db_config['CA_FILE'])})
