@@ -8,6 +8,7 @@ import os
 from jwcrypto import jwk, jwe
 from jwcrypto.common import json_encode
 import json
+import pymysql
 
 
 def read_config(path):
@@ -131,3 +132,13 @@ def object_dump(obj_name, obj_inst):
     obj_vars = sorted([x for x in tuple(set(obj_inst.__dict__)) if not x.startswith('__')])
     return '{}({})'.format(obj_name, ', '.join(['{}={}'.format(var, dig_deep(getattr(obj_inst, var))) for var in obj_vars]))
 
+
+def db_connect(db_config):
+    if db_config['CA_FILE']:
+        connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
+                                     db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor,
+                                     ssl={'ca': get_file_path(__file__, db_config['CA_FILE'])})
+    else:
+        connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
+                                     db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor)
+    return connection

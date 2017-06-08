@@ -14,7 +14,7 @@ setup(
     name='chuck_pyutils',
     version='0.1',
     packages=['chuck_pyutils'],
-    url='https://github.com/ChuckWoodraska/chuck-pyutils',
+    url='https://github.com/ChuckWoodraska/ChuckPyUtils',
     license='',
     author='Chuck Woodraska',
     author_email='chuck.woodraska@gmail.com',
