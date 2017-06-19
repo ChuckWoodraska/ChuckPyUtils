@@ -133,11 +133,11 @@ def object_dump(obj_name, obj_inst):
     return '{}({})'.format(obj_name, ', '.join(['{}={}'.format(var, dig_deep(getattr(obj_inst, var))) for var in obj_vars]))
 
 
-def db_connect(db_config):
+def db_connect(db_config, path=None):
     if 'CA_FILE' in db_config:
         connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
                                      db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor,
-                                     ssl={'ca': get_file_path(__file__, db_config['CA_FILE'])})
+                                     ssl={'ca': get_file_path(path, db_config['CA_FILE'])})
     else:
         connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
                                      db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor)
