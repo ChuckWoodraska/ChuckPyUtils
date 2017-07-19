@@ -12,14 +12,14 @@ def read(fname):
 
 setup(
     name='chuck_pyutils',
-    version='0.2',
+    version='0.3',
     packages=['chuck_pyutils'],
     url='https://github.com/ChuckWoodraska/ChuckPyUtils',
     license='',
     author='Chuck Woodraska',
     author_email='chuck.woodraska@gmail.com',
     description=read('README.md'),
-    requires=[],
+    requires=['PyMySQL', 'jwcrypto'],
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
