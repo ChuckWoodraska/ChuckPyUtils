@@ -19,7 +19,7 @@ setup(
     author='Chuck Woodraska',
     author_email='chuck.woodraska@gmail.com',
     description=read('README.md'),
-    requires=['PyMySQL', 'jwcrypto'],
+    install_requires=['PyMySQL', 'jwcrypto'],
     long_description=read('README.md'),
     classifiers=[
         "Development Status :: 3 - Alpha",
