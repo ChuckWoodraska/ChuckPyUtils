@@ -137,7 +137,7 @@ def db_connect(db_config, path=None):
     if 'CA_FILE' in db_config:
         connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
                                      db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor,
-                                     ssl={'ca': get_file_path(path, db_config['CA_FILE'])})
+                                     ssl={'ca': os.path.join(path, db_config['CA_FILE'])})
     else:
         connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
                                      db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor)
