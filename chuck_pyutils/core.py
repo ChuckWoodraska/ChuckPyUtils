@@ -8,7 +8,6 @@ import os
 from jwcrypto import jwk, jwe
 from jwcrypto.common import json_encode
 import json
-import pymysql
 
 
 def read_config(path):
@@ -66,26 +65,6 @@ def list_to_json_serialize(the_list):
     return new_list
 
 
-def transform_checkbox(checkbox):
-    """Transform checkbox return value from JavaScript."""
-    if checkbox == 'on':
-        return True
-    elif checkbox == 'off':
-        return False
-    else:
-        return False
-
-
-def transform_boolean(bool_value):
-    """Transform boolean return value from JavaScript."""
-    if bool_value == 'true':
-        return True
-    elif bool_value == 'false':
-        return False
-    else:
-        return False
-
-
 def datetime_converter(in_datetime: datetime, format_str: str = '%Y-%m-%dT%H:%M:%S') -> str:
     """
     Convert datetime object to str.
@@ -131,14 +110,3 @@ def object_dump(obj_name, obj_inst):
 
     obj_vars = sorted([x for x in tuple(set(obj_inst.__dict__)) if not x.startswith('__')])
     return '{}({})'.format(obj_name, ', '.join(['{}={}'.format(var, dig_deep(getattr(obj_inst, var))) for var in obj_vars]))
-
-
-def db_connect(db_config, path=None):
-    if 'CA_FILE' in db_config:
-        connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
-                                     db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor,
-                                     ssl={'ca': os.path.join(path, db_config['CA_FILE'])})
-    else:
-        connection = pymysql.connect(host=db_config['HOST'], user=db_config['USER'], password=db_config['PASS'],
-                                     db=db_config['DBNAME'], cursorclass=pymysql.cursors.DictCursor)
-    return connection
