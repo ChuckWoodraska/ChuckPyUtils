@@ -9,19 +9,9 @@ def data_formatter(data_dict, form_data):
 
 def transform_checkbox(checkbox):
     """Transform checkbox return value from JavaScript."""
-    if checkbox == 'on':
-        return True
-    elif checkbox == 'off':
-        return False
-    else:
-        return False
+    return checkbox == 'on'
 
 
 def transform_boolean(bool_value):
     """Transform boolean return value from JavaScript."""
-    if bool_value == 'true':
-        return True
-    elif bool_value == 'false':
-        return False
-    else:
-        return False
+    return bool_value == 'true'
