@@ -59,10 +59,7 @@ def json_serializer(the_dict):
 
 def list_to_json_serialize(the_list):
     """List of dicts to serialize"""
-    new_list = []
-    for the_dict in the_list:
-        new_list.append(json_serializer(the_dict))
-    return new_list
+    return [json_serializer(the_dict) for the_dict in the_list]
 
 
 def datetime_converter(in_datetime: datetime, format_str: str = '%Y-%m-%dT%H:%M:%S') -> str:
@@ -97,8 +94,7 @@ def make_token(pkey, payload):
                         json_encode({'alg': "RSA-OAEP",
                                      'enc': "A128CBC-HS256"}))
     jwe_token.add_recipient(encryption_key)
-    jwt_token = jwe_token.serialize()
-    return jwt_token
+    return jwe_token.serialize()
 
 
 def object_dump(obj_name, obj_inst):
